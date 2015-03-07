@@ -1,0 +1,50 @@
+﻿@using HAMIMPART.Controllers
+
+@{
+    ViewBag.Title = "OrederNow";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>OrederNow</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th>
+            Sub Total
+        </th>
+        <th>
+            Remove Item
+        </th>
+
+    </tr>
+    @{
+        double s = 0;
+    }
+    @foreach (var item in (List<Item>)Session["cart"])
+    {
+        s += Convert.ToInt32(item.ACart.Price) * item.Quantity;
+        <tr>
+            <th>@item.ACart.Title</th>
+            <th>@item.ACart.Price</th>
+            <th>@item.Quantity</th>
+            <th>@(Convert.ToInt32(item.ACart.Price) * item.Quantity)</th>
+            <th>@Html.ActionLink("Revome Item", "Remove",  new { id = item.ACart.ProductId }, null)</th>
+        </tr>
+    }
+    <tr>
+
+        <th colspan="3">total</th>
+        <th>@s</th>
+    </tr>
+</table>
+<hr />
+@Html.ActionLink("Continue Shopping", "Index");

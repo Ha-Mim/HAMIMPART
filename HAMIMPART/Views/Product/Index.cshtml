@@ -1,0 +1,227 @@
+﻿@using HAMIMPART.Models
+@model HAMIMPART.Models.Product
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Upload a Product</h2>
+
+<div class="col-md-9">
+    <div>
+        <ol class="breadcrumb">
+            <li class="active">
+                @Html.ActionLink("Home", "Index", "Home")
+                @if (ViewContext.RouteData.Values["controller"] != "Home" && ViewContext.RouteData.Values["action"] != "Index")
+                {
+                    @:> @Html.ActionLink(ViewContext.RouteData.Values["controller"].ToString(), "Index", ViewContext.RouteData.Values["controller"].ToString())
+        }
+
+                > @ViewBag.SubTitle
+            </li>
+        </ol>
+    </div>
+</div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Product</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title)
+                    @Html.ValidationMessageFor(model => model.Title)
+                </div>
+            </div>
+            <input id="fileupload" type="file" name="files" multiple="multiple" /> 
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImagePath, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ImagePath)
+                    @Html.ValidationMessageFor(model => model.ImagePath)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Specification, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Specification)
+                    @Html.ValidationMessageFor(model => model.Specification)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Description)
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Quantity)
+                    @Html.ValidationMessageFor(model => model.Quantity)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Price)
+                    @Html.ValidationMessageFor(model => model.Price)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CategoryId, "Categories", new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    <select class="form-control" id="categoryId" name="categoryId">
+                        <option></option> 
+                        @foreach (Category item in ViewBag.CategoryId)
+                        {
+                           
+                            <option  value=@item.CategoryId>@item.Name</option>
+                               
+                        }
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SubCategoryId, "SubCategories", new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    <select class="form-control" id="subcategoryId" name="subcategoryId">
+
+                        <option></option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Model, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Model)
+                    @Html.ValidationMessageFor(model => model.Model)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Brand, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Brand)
+                    @Html.ValidationMessageFor(model => model.Brand)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HardDisk, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.HardDisk)
+                    @Html.ValidationMessageFor(model => model.HardDisk)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ram, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Ram)
+                    @Html.ValidationMessageFor(model => model.Ram)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MadeBy, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MadeBy)
+                    @Html.ValidationMessageFor(model => model.MadeBy)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Size, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Size)
+                    @Html.ValidationMessageFor(model => model.Size)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+  
+    @section scripts {
+        <script src="~/Scripts/jquery-2.1.3.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="~/Scripts/FileUpload/jqueryui/jquery.ui.widget.js"></script>
+<script src="~/Scripts/FileUpload/jquery.iframe-transport.js"></script>
+<script src="~/Scripts/FileUpload/jquery.fileupload.js"></script>
+
+<script type="text/javascript">
+                $(function () {
+                    $('#fileupload').fileupload({
+                        dataType: 'json',
+                        url: '@Url.Action("image")',
+                        done: function (e, data) {
+                            $.each(data.result, function (index, file) {
+                               
+                                document.getElementById("ImagePath").value += file.name + ",";
+                               
+                              
+                            });
+                        }
+                    });
+                });
+</script>
+
+
+
+
+        <script>
+    
+            $("#categoryId").change(function() {
+
+                var id = $("#categoryId").val();
+                $("#subcategoryId").empty();
+
+                var json = { CategoryId: id };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetSubCategoryByCategoryId", "Product")',
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(json),
+                    dataType: "json",
+                    success: function(data) {
+
+                        $.each(data, function(key, value) {
+
+                            $("#subcategoryId").append('<option value=' + value.SubCategoryId + '>' + value.Name + '</option>');
+
+                        });
+
+                    },
+
+                });
+
+
+            });
+        </script>
+
+    }

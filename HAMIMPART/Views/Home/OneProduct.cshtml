@@ -1,0 +1,110 @@
+﻿@using HAMIMPART.Models
+
+
+@{
+    ViewBag.Title = "OneProduct";
+}
+
+
+@{
+    var aProduct = (Product)ViewBag.products;
+    var image = aProduct.ImagePath.Split(',');
+    var src1 = "/img/" + image[0];
+    var src2 = "/img/" + image[1];
+    var src3 = "/img/" + image[2];
+    var src4 = "/img/" + image[3];
+
+}
+<div class="row">
+    <div class="form-group">
+
+        <div class="col-md-6">
+            <h4>@aProduct.Title</h4>
+        </div>
+        <div class="col-md-6">
+            <h4>@aProduct.Price Tk</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <img src=@src1 />
+    </div>
+    <div class="col-md-3">
+        <img src=@src2 />
+    </div>
+    <div class="col-md-3">
+        <img src=@src3 />
+    </div>
+    <div class="col-md-3">
+        <img src=@src4 />
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+
+        <div class="col-md-4">
+            <h3>Specification</h3>
+            <h4>@aProduct.Specification</h4>
+        </div>
+        <div class="col-md-4">
+            <h3>Description</h3>
+            <h4>@aProduct.Description</h4>
+        </div>
+        <div class="col-md-4">
+            <h3>Available Quantity </h3>
+            <h4>@aProduct.Quantity</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        @if (aProduct.Model != null)
+        {
+            <div class="col-md-4">
+                <h3>Model</h3>
+                <h4>@aProduct.Model</h4>
+            </div>
+        }
+        @if (aProduct.Brand != null)
+        {
+            <div class="col-md-4">
+                <h3>Brand</h3>
+                <h4>@aProduct.Brand</h4>
+            </div>
+        }
+        @if (aProduct.MadeBy != null)
+        {
+            <div class="col-md-4">
+                <h3>Made By</h3>
+                <h4>@aProduct.MadeBy</h4>
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        @if (aProduct.HardDisk != null)
+        {
+            <div class="col-md-4">
+                <h3>HardDisk</h3>
+                <h4>@aProduct.HardDisk</h4>
+            </div>
+        }
+        @if (aProduct.Size != null)
+        {
+            <div class="col-md-4">
+                <h3>Size</h3>
+                <h4>@aProduct.Size</h4>
+            </div>
+        }
+        @if (aProduct.Ram != null)
+        {
+            <div class="col-md-4">
+                <h3>Ram</h3>
+                <h4>@aProduct.Ram</h4>
+            </div>
+        }
+        </div>
+    </div>
